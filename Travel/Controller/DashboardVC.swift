@@ -10,11 +10,7 @@ import UIKit
 
 public let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
 
-//enum Category: Int {
-//    case
-//}
-
-class ViewController: UIViewController {
+class DashboardVC: BaseVC {
 
     @IBOutlet weak var serachViewCollectionView: UICollectionView!
     @IBOutlet weak var searchViewContainer: UIView!
@@ -31,6 +27,10 @@ class ViewController: UIViewController {
         didSet {
             headerHeightConstraint.constant = heightConstant
             visualEffectView.frame = headerImageViewContainer.bounds
+            
+            UIView.animate(withDuration: 1) {
+                //self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -40,6 +40,11 @@ class ViewController: UIViewController {
         
         serachViewCollectionView.register(UINib(nibName: "PopularCell", bundle: nil), forCellWithReuseIdentifier: "PopularCell")
         serachViewCollectionView.register(UINib(nibName: "HeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
     }
     
     fileprivate func setupsearchView() {
@@ -63,23 +68,21 @@ class ViewController: UIViewController {
         propertyAnimator.addAnimations {
             self.visualEffectView.effect = UIBlurEffect(style: .dark)
         }
-}
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        view.endEditing(true)
-        UIView.animate(withDuration: 1) {
-            self.searchViewContainer.transform = .identity
-        }
     }
-    
 }
 
-extension ViewController: SearchBarDelegate {
+extension DashboardVC: SearchBarDelegate {
     
     func searchBarDidBeginSearching(_ searchBar: SearchBar) {
-        serachViewCollectionView.scrollToItem(at: IndexPath(item: 0, section: 3), at: .bottom, animated: true)
+        
+        self.heightConstant = statusBarHeight + 70
+        self.searchBarBottomConstraint.constant = 10
+        
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: .layoutSubviews, animations: {
+            self.serachViewCollectionView.contentOffset = .init(x: 0, y: 228)
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
     }
     
     func searchBar(_ searchBar: SearchBar, startSearchWith searchString: String) {
@@ -88,7 +91,7 @@ extension ViewController: SearchBarDelegate {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension DashboardVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -135,17 +138,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 }
 
 
-extension ViewController: HeaderViewDelegate {
+extension DashboardVC: HeaderViewDelegate {
     
     func headerView(_ headerView: HeaderView, didSelectItemAt section: Int) {
         
     }
 }
 
-extension ViewController {
+extension DashboardVC {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        print(scrollView.contentOffset.y)
         let offSet = scrollView.contentOffset.y + serachViewCollectionView.contentInset.top
         let fractionComplete = 1 - max(0, (imageViewheight - offSet)/imageViewheight)
         let maxHeight = statusBarHeight + 70

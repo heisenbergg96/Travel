@@ -48,6 +48,7 @@ extension SearchBar: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("Did begin called")
+        delegate?.searchBarDidBeginSearching(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
