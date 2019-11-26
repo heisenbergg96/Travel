@@ -61,7 +61,7 @@ class DashboardVC: BaseVC {
       
         visualEffectView.effect = nil
         imageViewheight = headerHeightConstraint.constant
-        serachViewCollectionView.contentInset = .init(top: 30, left: 0, bottom: 0, right: 0)
+        serachViewCollectionView.contentInset = .init(top: 260, left: 0, bottom: 0, right: 0)
         registerCell()
         setupsearchView()
         
@@ -75,14 +75,7 @@ extension DashboardVC: SearchBarDelegate {
     
     func searchBarDidBeginSearching(_ searchBar: SearchBar) {
         
-        self.heightConstant = statusBarHeight + 70
-        self.searchBarBottomConstraint.constant = 10
         
-        UIView.animateKeyframes(withDuration: 1, delay: 0, options: .layoutSubviews, animations: {
-            self.serachViewCollectionView.contentOffset = .init(x: 0, y: 228)
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
     }
     
     func searchBar(_ searchBar: SearchBar, startSearchWith searchString: String) {

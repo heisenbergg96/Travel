@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KMr-BM-VOi">
-                                <rect key="frame" x="0.0" y="250" width="414" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QZt-gJ-1gR">
                                     <size key="itemSize" width="50" height="50"/>
@@ -72,11 +72,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="A7H-by-Z5q" secondAttribute="trailing" id="0Ls-w7-N7G"/>
-                            <constraint firstItem="KMr-BM-VOi" firstAttribute="top" secondItem="A7H-by-Z5q" secondAttribute="bottom" id="Dn7-o8-rax"/>
                             <constraint firstItem="KMr-BM-VOi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FbL-Aq-pB5"/>
                             <constraint firstItem="A7H-by-Z5q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Jwe-kC-b4E"/>
                             <constraint firstItem="KMr-BM-VOi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bX3-Ow-EG9"/>
                             <constraint firstItem="A7H-by-Z5q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cqp-ae-65x"/>
+                            <constraint firstItem="KMr-BM-VOi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pEf-KE-iPQ"/>
                             <constraint firstAttribute="bottom" secondItem="KMr-BM-VOi" secondAttribute="bottom" id="r76-rT-sNZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
