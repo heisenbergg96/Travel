@@ -16,9 +16,11 @@ class DashboardVC: BaseVC {
     @IBOutlet weak var searchViewContainer: UIView!
     @IBOutlet weak var headerImageViewContainer: UIView!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var suggestionTableView: UITableView!
     @IBOutlet weak var searchBarBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     let propertyAnimator = UIViewPropertyAnimator(duration: 0.6, curve: .linear, animations: nil)
     var imageViewheight: CGFloat = 0
     
